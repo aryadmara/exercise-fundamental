@@ -115,3 +115,26 @@ function splitCloning(x, y){
 
 console.log(splitCloning("Hello World", "W"))
 
+// Soal 1
+const triangle = (height) => {
+    let print =""
+    let counter = 1
+    for (let index = 0; index < height; index++) { // masukin variabel tiap loopignya
+        for (let j = 0; j <= index; j++) {
+            if(counter < 10){
+                print += "0"
+            }
+            print += `${counter} `
+            counter++
+        }
+        print += "\n "//task
+    }
+    return print
+}
+console.log(triangle(5));
+
+// Fokus bikin baris dulu sejumlah tinggi yang sesuai (vertikal dulu)
+// melakukan pengulangan untuk lebarnya (horizontal kemudian)
+// setelah  selesai looping di dalam ditambahin baris bari
+// saat looping dalam sudah tidak memenuhi compartison baru \n
+// karena shpe vertikal dan horizontal udah, jadi tinggal tambahin counter
