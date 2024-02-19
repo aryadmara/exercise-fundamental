@@ -1,0 +1,75 @@
+<script>
+    alert("Welcome! Uhuy!")
+    let bermain = true
+    let MENANG = 0
+    let KALAH = 0
+    let SERI = 0
+    while(bermain){
+        let player = prompt(`Mari Bermain suwit Jepang, Silahkan memilih : \n1. Gunting\n2. Kertas\n3. Batu `)
+        console.log(typeof player);
+        // Pengkondisian Player (AMAN)
+        if(player == "1"){
+            player = "Gunting"
+        } else if (player == "2"){
+            player = "Kertas"
+        } else if(player == "3"){
+            player ="Batu"
+        }
+        console.log(player);
+        let pilihanOpsi = ["Gunting", "Kertas", "Batu"]
+        if (pilihanOpsi.includes(player)){
+            // Untuk hasil akhir ==> Inceremnt setiap kondisi menang
+            let hasilPertandingan =""
+            let komputer = Math.random()
+            let hasilKomputer =""
+            console.log(komputer);
+            // Pengkondisian jawaban komputer (AMAN)
+            if(komputer <= 0.33){
+                hasilKomputer = "Gunting"
+            } else if (komputer >= 0.34 && komputer <= 0.66){
+                hasilKomputer = "Kertas"
+            } else {
+                hasilKomputer = "Batu"
+            }
+            console.log(hasilKomputer);
+
+            //Pengkondisian Aturan
+                if(player  == hasilKomputer){
+                    hasilPertandingan = "HASIL SERI"
+                    SERI ++
+                } else if( player == "Gunting"){
+                    if(hasilKomputer == "Kertas"){
+                        hasilPertandingan ="ANDA MENANG"
+                        MENANG++
+                    } else {
+                        hasilPertandingan ="ANDA KALAH"
+                        KALAH++
+                    }
+                } else if (player == "Kertas"){
+                    if(hasilKomputer == "Gunting"){
+                        hasilPertandingan = "ANDA KALAH"
+                        KALAH++
+                    } else {
+                        hasilPertandingan = "ANDA MENANG"
+                        MENANG++
+                    }
+                } else if (player == "Batu"){
+                    if(hasilKomputer == "Gunting"){
+                        hasilPertandingan = "ANDA MENANG"
+                        MENANG++
+                    } else {
+                        hasilPertandingan ="ANDA KALAH"
+                        KALAH++
+                    }
+                }
+            alert(`Anda memilih ${player} dan komputer memilih ${hasilKomputer}\n 🎆${hasilPertandingan}🎆`)
+            alert(`MENANG : ${MENANG}\nKALAH : ${KALAH}\nSERI : ${SERI}`)
+            
+        }else {alert ("Maaf, input yang kamu masukan belum sesuai ketentuan, silahkan hanya masukan ANGKA di depan pada pilihan opsi suwit, seperti:\n 1 (untuk pilihan gunting)\n 2 (untuk pilihan kertas)\n 3 (untuk pilihan batu)")
+    }
+        bermain = confirm("Lagi?")
+    }
+    alert("Terimakasih sudah bermain!")
+    alert(`MENANG : ${MENANG}\nKALAH : ${KALAH}\nSERI : ${SERI}\n NILAI ANDA ADALAH ${MENANG * 25}`)
+    //BUG: HASIL PERTANDINGAN SELALU 1
+</script>
