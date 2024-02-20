@@ -1,0 +1,69 @@
+<script>
+//Class
+class Product {
+    constructor(_nameProduct,_kuantitas, _harga){
+        this.name = _nameProduct;
+        this.qty = _kuantitas;
+        this.price = _harga;
+        
+    }
+}
+
+const db2Product = [
+    new Product ("Baju",10, 30000),
+    new Product ("Jaket",30, 70000),
+]
+
+// Function
+function print (data){
+    const penampung = data.map((value, index)=>
+    result =`${index + 1}. ${value.name}, kuantitas : ${value.qty}. harga : Rp. ${value.price} `
+        )
+    return penampung.join("\n")
+}
+
+// Main Menu
+let bermain = true
+while(bermain){
+    const player = prompt(`Silahkan memilih menu : \nA. Lihat Data\nB. Tambah Data\nC. Hapus Data\nD.Update Data\nE. Exit `).toUpperCase()
+
+    //Pilihan Opsi
+    const opsi = ["A", "B", "C","D", "E"]
+    if(opsi.includes(player)){
+        if(player === opsi[0]){
+            alert(print(db2Product))
+        } else if (player === opsi[1]){
+            const penampungNama = prompt(`masukan nama`)
+            const penampungQty = prompt(`masukan jumlah`)
+            const penampungHarga = prompt(`masukan harga`)
+            db2Product.push(new Product(penampungNama, penampungQty, penampungHarga))
+            alert(print(db2Product))      
+        } else if(player === opsi[2]){
+            const motong = prompt(`Pilih barang yang akan di hapus: \n${print(db2Product)}`)
+            db2Product.splice(Number(motong) -1, 1)
+            alert(print(db2Product))
+        } else if(player === opsi[3]){
+            const update = prompt (`pilih barang yang akan di update: \n${print(db2Product)}`)
+            const property = prompt (`A. Ubah nama\nB. Ubah stok\nC.Ubah harga`).toUpperCase()
+            const namaBaru = prompt(`masukan input baru`)
+            const penampungProperty = ["A", "B", "C"]
+            if(property === penampungProperty[0]){
+                db2Product[Number(update)-1].name = namaBaru
+            } else if (property === penampungProperty[1]){
+                db2Product[Number(update)-1].qty = namaBaru
+            } else if (property === penampungProperty[2]){
+                db2Product[Number(update)-1].price = namaBaru
+            }
+            alert(print(db2Product))
+        } else if (player === opsi[4]){
+            break
+        }
+    } else {
+        alert(`Maapkeun opsi belum dibuat cuy`)
+    }
+    bermain = confirm(`Mau coba lagi?`)
+}
+const terakhir = alert(`Terimakasih!, Arigatou, Kamsamnida`)
+</script>
+
+<!-- cuma bisa jalan kalo inputnya sesuai aja -->
